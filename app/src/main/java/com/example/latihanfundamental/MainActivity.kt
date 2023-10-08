@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         tv =findViewById(R.id.textview1)
 
         val username =intent.getParcelableExtra<User>("User")?.username
+
         val password =intent.getParcelableExtra<User>("User")?.password
         tv.text = "Username: $username dan Password: $password"
 
@@ -28,14 +29,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id){
             R.id.btn_implicit -> {
-//                val message = "Bagaimana kabarmu hari ini?"
-//                val intent = Intent()
-//                intent.action = Intent.ACTION_SEND
-//                intent.putExtra(Intent.EXTRA_TEXT, message)
-//                intent.type = "text/plain"
-//                startActivity(intent)
-
+                val message = "Selamat Login Anda Berhasil, dan terimpan di History. Have A Nice day :)?"
                 val intent = Intent()
+                intent.action = Intent.ACTION_SEND
+                intent.putExtra(Intent.EXTRA_TEXT, message)
+                intent.type = "text/plain"
+                startActivity(intent)
+
                 intent.putExtra("history", "Anda sudah login")
                 setResult(RESULT_OK,intent)
                 finish()
